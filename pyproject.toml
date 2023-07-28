@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dlmslogger"
+version = "0.0.1"
+authors = [
+  { name="Sensioty", email="development@sensioty.ch" },
+]
+description = "A simple cli tool to fetch data from DLMS capable smart meters."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Environment :: Console",
+  "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+  "Operating System :: OS Independent",
+]
+
+dependencies = [
+  "gurux-common==1.0.13",
+  "gurux-dlms==1.0.145",
+  "gurux-net==1.0.19",
+  "gurux-serial==1.0.20",
+  "click==8.1.6"
+]
+
+[project.scripts]
+"dlms-logger" = "dlmslogger.dlmslogger:cli"
+
+[project.urls]
+"Homepage" = "https://github.com/sensioty/dlms-logger"
