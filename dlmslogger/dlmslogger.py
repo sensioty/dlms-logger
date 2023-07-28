@@ -26,19 +26,19 @@ class DLMSLogger:
         self.media.port = self.getUSBDevice()
 
         self.media.baudRate = int(
-            os.getenv('DLMS_LOGGER_BAUD_RATE', BaudRate.BAUD_RATE_9600))
-        self.media.dataBits = int(os.getenv('DLMS_LOGGER_DATA_BITS', 8))
+            os.getenv('DLMS_LOGGER_SERIAL_BAUD_RATE', BaudRate.BAUD_RATE_9600))
+        self.media.dataBits = int(os.getenv('DLMS_LOGGER_SERIAL_DATA_BITS', 8))
         self.media.parity = Parity[os.getenv(
-            'DLMS_LOGGER_PARITY', 'NONE').upper()]
-        self.media.stopBits = StopBits[os.getenv('DLMS_LOGGER_STOP_BITS', 'ONE').upper()]
+            'DLMS_LOGGER_SERIAL_PARITY', 'NONE').upper()]
+        self.media.stopBits = StopBits[os.getenv('DLMS_LOGGER_SERIAL_STOP_BITS', 'ONE').upper()]
 
         # Windows Size
         self.client.hdlcSettings.windowSizeRX = self.client.hdlcSettings.windowSizeTX = int(
-            os.getenv('DLMS_LOGGER_WINDOW_SIZE', '1'))
+            os.getenv('DLMS_LOGGER_HDLC_WINDOW_SIZE', '1'))
 
         # Max Info Size
         self.client.hdlcSettings.maxInfoRX = self.client.hdlcSettings.maxInfoTX = int(
-            os.getenv('DLMS_LOGGER_MAX_INFO_BYTES', '128'))
+            os.getenv('DLMS_LOGGER_HDLC_FRAME_SIZE', '128'))
 
         # Authentication mode
         self.client.authentication = self.getAutentication()
